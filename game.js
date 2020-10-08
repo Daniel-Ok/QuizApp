@@ -42,7 +42,7 @@ const MAX_QUESTIONS= 3;
 startGame = () => {
     questionCounter= 0;
     score = 0;
-    availableQuestion =[... questions];
+    availableQuestion =[...questions];
     getNewQuestion();
 };
 
@@ -60,9 +60,14 @@ choices.forEach((choice)=>{
     const number = choice.dataset['number'];
     choice.innerText = currentQuestion['choice' + number];
 });
+
 const questionIndex = Math.floor(Math.random() * availableQuestion.length);
     availableQuestion.splice( questionIndex, 1);
     acceptingAnswers = true;
+choices.forEach((choice) => {
+    const number = choice.dataset['number'];
+    choice.innerText = currentQuestion['choice' + number];
+});
 
     choices.forEach((choice)=>{
         choice.addEventListener('click', (e)=>{
