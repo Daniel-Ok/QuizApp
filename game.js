@@ -47,7 +47,7 @@ startGame = () => {
 };
 
 getNewQuestion = ()=>{
-    if(availableQuestion.length ===0 || questionCounter>MAX_QUESTIONS){
+    if(availableQuestion.length ===0 || questionCounter>=MAX_QUESTIONS){
         //go to the end page
         return window.location.assign("./end.html");
     }
@@ -60,7 +60,8 @@ choices.forEach((choice)=>{
     const number = choice.dataset['number'];
     choice.innerText = currentQuestion['choice' + number];
 });
-    availableQuestion.splice(questionIndex, 1);
+const questionIndex = Math.floor(Math.random() * availableQuestion.length);
+    availableQuestion.splice( questionIndex, 1);
     acceptingAnswers = true;
 
     choices.forEach((choice)=>{
